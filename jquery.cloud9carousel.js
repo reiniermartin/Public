@@ -363,11 +363,11 @@
         xOrigin: null,        // null: calculated automatically
         yOrigin: null,
         xRadius: null,
-        yRadius: -20,
-        farScale: 0.5,        // scale of the farthest item
+        yRadius: 0,
+        farScale: 0.6,        // scale of the farthest item
         transforms: true,     // enable CSS transforms
         smooth: true,         // enable smooth animation via requestAnimationFrame()
-        fps: 30,              // fixed frames per second (if smooth animation is off)
+        fps: 24,              // fixed frames per second (if smooth animation is off)
         speed: 4,             // positive number
         autoPlay: 0,          // [ 0: off | number of items (integer recommended, positive is clockwise) ]
         autoPlayDelay: 4000,
