@@ -11,7 +11,7 @@
 (function ($) {
     $.fn.FacebookAlbumBrowser = function (options) {
         var defaults = {
-            account: "zoeandzazu",
+            account: "",
             accessToken: "1403310083119156|_Vq_lTOOj0TsNQCQDCQI4DBtYZQ",
             showAccountInfo: false,
             showImageCount: false,
