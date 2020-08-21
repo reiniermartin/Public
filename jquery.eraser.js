@@ -106,6 +106,7 @@
 
             ctx.lineCap = 'round';
             // bind events
+            //$canvas.bind('mouseover.eraser', methods.mouseOver);
             $canvas.bind('mousedown.eraser', methods.mouseDown);
             $canvas.bind('touchstart.eraser', methods.touchStart);
             $canvas.bind('touchmove.eraser', methods.touchMove);
@@ -172,7 +173,7 @@
         tx *= data.scaleRatio;
         ty *= data.scaleRatio;
         methods.evaluatePoint(data, tx, ty);
-        data.touchDown = true;
+        data.touchDown = false;//was true
         data.touchID = t.identifier;
         data.touchX = tx;
         data.touchY = ty;
@@ -217,7 +218,7 @@
           n = ta.length;
         while( n-- ) {
           if ( ta[n].identifier == data.touchID ) {
-            data.touchDown = false;
+            data.touchDown = true;//was false
             event.preventDefault();
             break;
           }
@@ -253,7 +254,7 @@
       ty *= data.scaleRatio;
 
       methods.evaluatePoint( data, tx, ty );
-      data.touchDown = true;
+      data.touchDown = false;//was true
       data.touchX = tx;
       data.touchY = ty;
       data.ctx.beginPath();
@@ -288,7 +289,7 @@
       var data = event.data,
           $this = data.canvas;
 
-      data.touchDown = false;
+      data.touchDown = true;//was false
       $this.unbind('mousemove.eraser');
       $(document).unbind('mouseup.eraser');
       event.preventDefault();
@@ -329,8 +330,8 @@
         var n = data.numParts;
         while (n--) data.parts[n] = 1;
         data.ratio = 0;
-        data.complete = false;
-        data.touchDown = false;
+        data.complete = true;//was false
+        data.touchDown = true;//was false
       }
     },
 
