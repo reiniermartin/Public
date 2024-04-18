@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('mouseup', endDrawing);
     canvas.addEventListener('mouseout', endDrawing);
 
+    // Touch events
+    canvas.addEventListener('touchstart', handleTouchStart);
+    canvas.addEventListener('touchmove', handleTouchMove);
+    canvas.addEventListener('touchend', endDrawing);
+
     function startDrawing(e) {
         isDrawing = true;
         const { offsetX, offsetY } = e;
@@ -22,6 +27,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.lineTo(offsetX, offsetY);
         ctx.stroke();
+    }
+
+    function handleTouchStart(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const { pageX, pageY } = touch;
+        const offsetX = pageX - canvas.offsetLeft;
+        const offsetY = pageY - canvas.offsetTop;
+        startDrawing({ offsetX, offsetY });
+    }
+
+    function handleTouchMove(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const { pageX, pageY } = touch;
+        const offsetX = pageX - canvas.offsetLeft;
+        const offsetY = pageY - canvas.offsetTop;
+        draw({ offsetX, offsetY });
     }
 
     function endDrawing() {
